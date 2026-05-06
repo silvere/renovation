@@ -804,6 +804,26 @@
         height: auto;
       }
 
+      .image-map {
+        position: relative;
+      }
+
+      .map-marker {
+        position: absolute;
+        left: var(--x);
+        top: var(--y);
+        transform: translate(-50%, -50%);
+        border: 1px solid rgb(255 255 255 / 70%);
+        border-radius: 999px;
+        padding: 7px 11px;
+        background: var(--marker, var(--ink));
+        color: white;
+        box-shadow: 0 10px 24px rgb(32 32 29 / 22%);
+        font-size: 13px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
       .birdseye figcaption {
         padding: 10px 13px;
         border-top: 1px solid var(--line);
@@ -1011,13 +1031,20 @@
             <p>这是你说的“从上往下看”的室内建筑效果图，更准确叫彩平图或顶视平面渲染图。它把功能方案、家具、器械、茶位、桑拿和关键尺寸放在同一张户型图里。</p>
           </div>
           <figure class="birdseye">
-            <img src="renders/overall-topdown-render-v3-living-balcony.png" alt="239 平无电视客厅与南阳台整体鸟瞰室内建筑效果图">
+            <div class="image-map">
+              <img src="renders/overall-topdown-render-v3-living-balcony.png" alt="239 平无电视客厅与南阳台整体鸟瞰室内建筑效果图">
+              <span class="map-marker" style="--x: 15%; --y: 21%; --marker: var(--green);">桑拿预留</span>
+              <span class="map-marker" style="--x: 52%; --y: 59%; --marker: var(--gold);">公共长桌</span>
+              <span class="map-marker" style="--x: 60%; --y: 64%; --marker: var(--blue);">移动屏/临时投影</span>
+              <span class="map-marker" style="--x: 76%; --y: 71%; --marker: var(--red);">整间健身</span>
+              <span class="map-marker" style="--x: 50%; --y: 90%; --marker: var(--green);">阳台三段式</span>
+            </div>
             <figcaption>整体鸟瞰室内建筑效果图：客厅改为无电视围坐 + 公共长桌，南阳台改为茶位、绿植拉伸、家政缓冲三段式；右下 15.7㎡仍是整间健身/训练空间。</figcaption>
           </figure>
           <div class="plan-stage">
             <figure class="plan-render">
-              <a href="top-view-render-plan.svg" target="_blank" rel="noreferrer">
-                <img src="top-view-render-plan.svg" alt="239 平轻改方案顶视彩平渲染图">
+              <a href="top-view-render-plan.png" target="_blank" rel="noreferrer">
+                <img src="top-view-render-plan.png" alt="239 平轻改方案顶视彩平渲染图">
               </a>
             </figure>
             <aside class="plan-notes">
@@ -1276,7 +1303,7 @@
               <button class="pano-tab" type="button" data-pano="0" aria-pressed="true"><b>客餐厅 54.3㎡</b><span>约 6.4m 南向开口</span></button>
               <button class="pano-tab" type="button" data-pano="1" aria-pressed="false"><b>健身房 15.7㎡</b><span>约 3.2m × 4.2m</span></button>
               <button class="pano-tab" type="button" data-pano="2" aria-pressed="false"><b>主卧办公区</b><span>套房 47.8㎡内</span></button>
-              <button class="pano-tab" type="button" data-pano="3" aria-pressed="false"><b>阳台茶位 19.4㎡</b><span>约 9.7m × 2.1m</span></button>
+              <button class="pano-tab" type="button" data-pano="3" aria-pressed="false"><b>阳台三段式 19.4㎡</b><span>茶位 + 瑜伽 + 高柜</span></button>
               <button class="pano-tab" type="button" data-pano="4" aria-pressed="false"><b>主卧桑拿</b><span>干区/衣帽间紧凑放置</span></button>
             </div>
             <div class="viewer">
@@ -1322,10 +1349,10 @@
               </div>
             </article>
             <article class="render-card">
-              <img class="render-photo" src="panoramas/balcony-tea-360.png" alt="19.4 平南阳台茶位 3D 渲染">
+              <img class="render-photo" src="panoramas/balcony-three-zone-360-v2.png" alt="19.4 平南阳台三段式 3D 渲染">
               <div class="render-body">
-                <h3 id="renderThreeTitle">南向阳台小茶位</h3>
-                <p id="renderThreeCopy">小体量茶桌和窄边柜，不占公共会客主轴。</p>
+                <h3 id="renderThreeTitle">南向阳台三段式</h3>
+                <p id="renderThreeCopy">茶阅读、瑜伽拉伸、清洁高柜沿长向组织，避免只剩一个两人茶桌。</p>
               </div>
             </article>
           </div>
@@ -1487,7 +1514,7 @@
           panoTitle: "方案 A 全屋动线视角",
           panoNote: "玄关进入，右侧健身，向内到客餐厅，南向阳台茶位，最后回到主卧办公和桑拿。",
           scenes: ["独立力量房", "龙门架靠墙，镜墙修正动作，橡胶地垫保护精装地面。", "南向景观茶位", "小茶桌、两座和窄边柜，保留阳台通行和清洁路径。", "主卧双人办公", "两张升降桌错位布置，书柜做整洁视频背景。", "成品桑拿舱", "主卧干区优先，确认功率、散热和搬运路径后下单。"],
-          renders: ["右下卧室力量房", "龙门架、引体、可调哑铃和整屋地垫，优先保证训练安全区。", "主卧双人升降办公", "双桌、双屏、整墙柜和视频背景，适合长期高频办公。", "南向阳台小茶位", "小体量茶桌和窄边柜，不占公共会客主轴。"]
+          renders: ["右下卧室力量房", "龙门架、引体、可调哑铃和整屋地垫，优先保证训练安全区。", "主卧双人升降办公", "双桌、双屏、整墙柜和视频背景，适合长期高频办公。", "南向阳台三段式", "茶阅读、瑜伽拉伸、清洁高柜沿长向组织，避免只剩一个两人茶桌。"]
         },
         {
           title: "方案 B：办公优先版",
@@ -1583,11 +1610,11 @@
           image: "panoramas/master-office-360.png"
         },
         {
-          title: "南向阳台 19.4㎡ 茶位 360 渲染",
-          note: "按图纸南阳台 19.4㎡、约 9.7m × 2.1m 约束，强调长而窄，不做成大露台。",
+          title: "南向阳台 19.4㎡ 三段式 360 渲染",
+          note: "按图纸南阳台 19.4㎡、约 9.7m × 2.1m 约束，茶阅读、瑜伽拉伸和清洁高柜沿长向组织。",
           dimension: "南向阳台 19.4㎡，约 9.7m × 2.1m",
-          caption: "小茶桌和窄边柜靠客厅侧布置，保留阳台横向通行和清洁路径。",
-          image: "panoramas/balcony-tea-360.png"
+          caption: "瑜伽垫沿阳台长向铺设，尽头是整合式清洁高柜；茶桌只是靠客厅的一段。",
+          image: "panoramas/balcony-three-zone-360-v2.png"
         },
         {
           title: "主卧干区/衣帽间桑拿 360 渲染",
