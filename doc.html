@@ -3,209 +3,239 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>文档查看</title>
+    <title>装修执行文档</title>
     <style>
       :root {
+        color-scheme: light;
         --ink: #20201d;
         --muted: #68645d;
         --line: #d9d4ca;
         --paper: #f5f0e7;
         --panel: #fffdf8;
-        --blue: #24566c;
       }
 
-      * { box-sizing: border-box; }
+      * {
+        box-sizing: border-box;
+      }
 
       body {
         margin: 0;
         background: var(--paper);
         color: var(--ink);
         font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        line-height: 1.7;
+        line-height: 1.65;
       }
 
-      .topbar {
-        position: sticky;
-        top: 0;
-        z-index: 30;
-        border-bottom: 1px solid var(--line);
-        background: rgb(245 240 231 / 92%);
-        backdrop-filter: blur(16px);
-      }
-
-      .topbar-inner {
-        width: min(860px, calc(100% - 32px));
+      main {
+        width: min(920px, calc(100% - 32px));
         margin: 0 auto;
-        min-height: 56px;
-        display: flex;
-        align-items: center;
-        gap: 16px;
+        padding: 32px 0 54px;
+      }
+
+      a {
+        color: inherit;
       }
 
       .back {
         display: inline-flex;
+        min-height: 38px;
         align-items: center;
-        gap: 6px;
-        padding: 6px 14px;
         border: 1px solid var(--line);
-        border-radius: 6px;
+        border-radius: 8px;
+        padding: 0 12px;
         background: var(--panel);
-        color: var(--ink);
         text-decoration: none;
-        font-size: 14px;
       }
 
-      .back:hover { background: var(--paper); }
-
-      .doc-title {
-        font-size: 15px;
-        font-weight: 600;
-        color: var(--muted);
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+      article {
+        margin-top: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        padding: 24px;
       }
 
-      .content {
-        width: min(860px, calc(100% - 32px));
-        margin: 0 auto;
-        padding: 32px 0 60px;
+      h1,
+      h2,
+      h3 {
+        line-height: 1.2;
       }
 
-      .content h1 { font-size: 28px; line-height: 1.2; margin: 0 0 20px; border-bottom: 2px solid var(--line); padding-bottom: 12px; }
-      .content h2 { font-size: 22px; line-height: 1.25; margin: 32px 0 12px; border-bottom: 1px solid var(--line); padding-bottom: 8px; }
-      .content h3 { font-size: 18px; margin: 24px 0 8px; }
-      .content h4 { font-size: 16px; margin: 20px 0 6px; }
-
-      .content p { margin: 0 0 14px; }
-
-      .content ul, .content ol { margin: 0 0 14px; padding-left: 24px; }
-      .content li { margin-bottom: 6px; }
-      .content li > ul, .content li > ol { margin-top: 6px; margin-bottom: 0; }
-
-      .content table {
+      table {
         width: 100%;
         border-collapse: collapse;
-        margin: 0 0 18px;
-        font-size: 14px;
+        margin: 16px 0;
       }
 
-      .content th, .content td {
-        padding: 10px 12px;
+      th,
+      td {
         border: 1px solid var(--line);
+        padding: 9px 10px;
         text-align: left;
         vertical-align: top;
       }
 
-      .content th {
+      th {
         background: #ece4d7;
-        font-weight: 600;
       }
 
-      .content code {
-        background: #ece4d7;
-        padding: 2px 6px;
-        border-radius: 4px;
-        font-size: 0.9em;
+      code {
+        background: #eee7dc;
+        border-radius: 5px;
+        padding: 2px 5px;
       }
 
-      .content pre {
-        background: #2d2a25;
-        color: #e8e0d4;
-        padding: 16px;
+      pre {
+        overflow: auto;
+        background: #eee7dc;
         border-radius: 8px;
-        overflow-x: auto;
-        margin: 0 0 18px;
+        padding: 14px;
       }
 
-      .content pre code {
-        background: none;
-        padding: 0;
-        color: inherit;
-      }
-
-      .content blockquote {
-        margin: 0 0 14px;
-        padding: 10px 16px;
-        border-left: 4px solid var(--blue);
-        background: var(--panel);
-        border-radius: 0 6px 6px 0;
+      .muted {
         color: var(--muted);
-      }
-
-      .content blockquote p:last-child { margin-bottom: 0; }
-
-      .content hr {
-        border: none;
-        border-top: 1px solid var(--line);
-        margin: 28px 0;
-      }
-
-      .content strong { color: var(--ink); }
-
-      .content input[type="checkbox"] {
-        margin-right: 6px;
-        accent-color: var(--blue);
-      }
-
-      .loading {
-        text-align: center;
-        padding: 60px 0;
-        color: var(--muted);
-        font-size: 16px;
-      }
-
-      .error {
-        text-align: center;
-        padding: 60px 20px;
-        color: #9d4035;
-      }
-
-      @media (max-width: 720px) {
-        .content h1 { font-size: 22px; }
-        .content h2 { font-size: 18px; }
-        .content { padding: 20px 0 40px; }
       }
     </style>
   </head>
   <body>
-    <header class="topbar">
-      <div class="topbar-inner">
-        <a class="back" href="index.html">&larr; 返回方案</a>
-        <span class="doc-title" id="docTitle"></span>
-      </div>
-    </header>
-    <article class="content" id="content">
-      <div class="loading">加载中...</div>
-    </article>
-    <script src="https://cdn.jsdelivr.net/npm/marked@15/marked.min.js"></script>
-    <script>
-      const params = new URLSearchParams(location.search);
-      const file = params.get("file");
-      const titles = {
-        "README.md": "总任务书",
-        "room-by-room-spec.md": "逐空间规格",
-        "vendor-brief.md": "供应商任务书",
-        "measurement-checklist.md": "复尺清单",
-        "acceptance-checklist.md": "验收清单",
-        "procurement-shortlist.md": "采购短清单"
-      };
+    <main>
+      <a class="back" href="index.html">返回方案网站</a>
+      <article id="content">
+        <p class="muted">正在加载文档...</p>
+      </article>
+    </main>
 
-      if (!file || !/^[\w.-]+\.md$/i.test(file)) {
-        document.getElementById("content").innerHTML = '<div class="error">未指定有效文档。<br><a href="index.html">返回方案首页</a></div>';
+    <script>
+      const allowed = new Set([
+        "README.md",
+        "room-by-room-spec.md",
+        "vendor-brief.md",
+        "measurement-checklist.md",
+        "acceptance-checklist.md",
+        "procurement-shortlist.md"
+      ]);
+
+      const params = new URLSearchParams(location.search);
+      const file = params.get("file") || "README.md";
+      const content = document.querySelector("#content");
+
+      function escapeHtml(value) {
+        return value
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;");
+      }
+
+      function renderMarkdown(markdown) {
+        const lines = markdown.split(/\r?\n/);
+        const html = [];
+        let inList = false;
+        let inTable = false;
+
+        const closeList = () => {
+          if (inList) html.push("</ul>");
+          inList = false;
+        };
+
+        const closeTable = () => {
+          if (inTable) html.push("</tbody></table>");
+          inTable = false;
+        };
+
+        for (let index = 0; index < lines.length; index += 1) {
+          const line = lines[index];
+
+          if (/^\s*$/.test(line)) {
+            closeList();
+            closeTable();
+            continue;
+          }
+
+          if (line.startsWith("```")) {
+            closeList();
+            closeTable();
+            const code = [];
+            index += 1;
+            while (index < lines.length && !lines[index].startsWith("```")) {
+              code.push(lines[index]);
+              index += 1;
+            }
+            html.push(`<pre><code>${escapeHtml(code.join("\n"))}</code></pre>`);
+            continue;
+          }
+
+          if (line.startsWith("# ")) {
+            closeList();
+            closeTable();
+            html.push(`<h1>${escapeHtml(line.slice(2))}</h1>`);
+            continue;
+          }
+
+          if (line.startsWith("## ")) {
+            closeList();
+            closeTable();
+            html.push(`<h2>${escapeHtml(line.slice(3))}</h2>`);
+            continue;
+          }
+
+          if (line.startsWith("### ")) {
+            closeList();
+            closeTable();
+            html.push(`<h3>${escapeHtml(line.slice(4))}</h3>`);
+            continue;
+          }
+
+          if (line.startsWith("|") && line.endsWith("|")) {
+            closeList();
+            const cells = line.split("|").slice(1, -1).map((cell) => escapeHtml(cell.trim()));
+            const next = lines[index + 1] || "";
+            if (!inTable) {
+              html.push("<table>");
+              inTable = true;
+              if (/^\|[\s:-]+\|/.test(next)) {
+                html.push(`<thead><tr>${cells.map((cell) => `<th>${cell}</th>`).join("")}</tr></thead><tbody>`);
+                index += 1;
+              } else {
+                html.push("<tbody>");
+                html.push(`<tr>${cells.map((cell) => `<td>${cell}</td>`).join("")}</tr>`);
+              }
+            } else {
+              html.push(`<tr>${cells.map((cell) => `<td>${cell}</td>`).join("")}</tr>`);
+            }
+            continue;
+          }
+
+          if (/^- /.test(line)) {
+            closeTable();
+            if (!inList) html.push("<ul>");
+            inList = true;
+            html.push(`<li>${escapeHtml(line.slice(2))}</li>`);
+            continue;
+          }
+
+          closeList();
+          closeTable();
+          html.push(`<p>${escapeHtml(line)}</p>`);
+        }
+
+        closeList();
+        closeTable();
+        return html.join("\n");
+      }
+
+      if (!allowed.has(file)) {
+        content.innerHTML = "<h1>文档不存在</h1><p>请从方案网站的文档入口打开。</p>";
       } else {
-        document.getElementById("docTitle").textContent = titles[file] || file;
-        document.title = (titles[file] || file) + " - 239平精装轻改";
         fetch(file)
-          .then(function (r) {
-            if (!r.ok) throw new Error(r.status);
-            return r.text();
+          .then((response) => {
+            if (!response.ok) throw new Error("load failed");
+            return response.text();
           })
-          .then(function (md) {
-            document.getElementById("content").innerHTML = marked.parse(md);
+          .then((markdown) => {
+            content.innerHTML = renderMarkdown(markdown);
           })
-          .catch(function () {
-            document.getElementById("content").innerHTML = '<div class="error">无法加载文档 "' + file + '"。<br><a href="index.html">返回方案首页</a></div>';
+          .catch(() => {
+            content.innerHTML = `<h1>无法直接渲染文档</h1><p>浏览器可能限制 file:// 页面读取本地 Markdown。可以直接打开：<a href="${file}">${file}</a></p>`;
           });
       }
     </script>
