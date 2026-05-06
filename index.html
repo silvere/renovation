@@ -1,0 +1,1686 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>239 平精装轻改方案展示</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #20201d;
+        --muted: #68645d;
+        --line: #d9d4ca;
+        --paper: #f5f0e7;
+        --panel: #fffdf8;
+        --panel-2: #ece4d7;
+        --blue: #24566c;
+        --green: #526742;
+        --red: #9d4035;
+        --gold: #a1712a;
+        --plum: #6c4c68;
+        --shadow: 0 14px 34px rgb(40 36 29 / 12%);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.55;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      .shell {
+        width: min(1240px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        border-bottom: 1px solid var(--line);
+        background: rgb(245 240 231 / 92%);
+        backdrop-filter: blur(16px);
+      }
+
+      .topbar .shell {
+        min-height: 66px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .brand strong {
+        display: block;
+        font-size: 17px;
+      }
+
+      .brand span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      nav {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .hero {
+        padding: 28px 0 20px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.85fr) minmax(460px, 1.15fr);
+        gap: 22px;
+        align-items: stretch;
+      }
+
+      .intro {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 22px;
+        min-height: 560px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        width: fit-content;
+        min-height: 28px;
+        align-items: center;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0 10px;
+        background: var(--panel);
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        margin-bottom: 16px;
+        font-size: 58px;
+        line-height: 1;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        max-width: 680px;
+        color: var(--muted);
+        font-size: 17px;
+      }
+
+      .scheme-tabs {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .scheme-tab {
+        min-height: 54px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        color: var(--ink);
+        cursor: pointer;
+        text-align: left;
+        padding: 8px 10px;
+      }
+
+      .scheme-tab b {
+        display: block;
+        font-size: 15px;
+      }
+
+      .scheme-tab span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .scheme-tab[aria-pressed="true"] {
+        border-color: var(--ink);
+        background: var(--ink);
+        color: white;
+      }
+
+      .scheme-tab[aria-pressed="true"] span {
+        color: rgb(255 255 255 / 76%);
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .stat {
+        border-top: 3px solid var(--blue);
+        padding-top: 10px;
+      }
+
+      .stat:nth-child(2) {
+        border-color: var(--green);
+      }
+
+      .stat:nth-child(3) {
+        border-color: var(--red);
+      }
+
+      .stat:nth-child(4) {
+        border-color: var(--gold);
+      }
+
+      .stat b {
+        display: block;
+        font-size: 23px;
+        line-height: 1;
+      }
+
+      .stat span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .floor-wrap {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 185px;
+        gap: 12px;
+      }
+
+      .floor-card,
+      .mini-panel,
+      .viewer,
+      .render-card,
+      .detail-card,
+      .compare-table,
+      .doc-link,
+      .flow-card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+
+      .floor-card {
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+
+      .floor-card img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        min-height: 560px;
+        max-height: 680px;
+        object-fit: contain;
+        background: #f2eee6;
+      }
+
+      .pin {
+        position: absolute;
+        left: var(--x);
+        top: var(--y);
+        transform: translate(-50%, -50%);
+        min-width: 84px;
+        border: 1px solid rgb(255 255 255 / 75%);
+        border-radius: 8px;
+        padding: 6px 8px;
+        background: var(--pin, var(--blue));
+        color: white;
+        box-shadow: 0 10px 22px rgb(0 0 0 / 18%);
+        font-size: 12px;
+        line-height: 1.25;
+      }
+
+      .mini-panel {
+        padding: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .mini-panel h3 {
+        margin-bottom: 0;
+        font-size: 18px;
+      }
+
+      .mini-panel p {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .meter {
+        display: grid;
+        gap: 5px;
+      }
+
+      .meter label {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .bar {
+        height: 8px;
+        border-radius: 999px;
+        background: #ded8ca;
+        overflow: hidden;
+      }
+
+      .bar span {
+        display: block;
+        width: var(--w);
+        height: 100%;
+        background: var(--c, var(--blue));
+      }
+
+      section {
+        padding: 28px 0;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 16px;
+      }
+
+      h2 {
+        margin-bottom: 0;
+        font-size: 28px;
+        line-height: 1.15;
+        letter-spacing: 0;
+      }
+
+      .section-head p {
+        margin-bottom: 0;
+        max-width: 680px;
+        color: var(--muted);
+      }
+
+      .viewer {
+        overflow: hidden;
+      }
+
+      .viewer-head {
+        min-height: 58px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .viewer-head h3 {
+        margin-bottom: 0;
+        font-size: 18px;
+      }
+
+      .viewer-head span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .panorama-window {
+        position: relative;
+        height: 360px;
+        overflow: hidden;
+        background: #d9d0c1;
+      }
+
+      .panorama-track {
+        width: 240%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        transition: transform 180ms ease;
+        transform: translateX(var(--pan, 0%));
+      }
+
+      .scene {
+        position: relative;
+        overflow: hidden;
+        padding: 18px;
+        border-right: 1px solid rgb(255 255 255 / 50%);
+        background:
+          linear-gradient(180deg, rgb(255 255 255 / 50%), rgb(255 255 255 / 0) 36%),
+          linear-gradient(90deg, var(--wall-a), var(--wall-b));
+      }
+
+      .scene::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 34%;
+        background:
+          linear-gradient(120deg, rgb(255 255 255 / 0) 0 46%, rgb(255 255 255 / 35%) 47% 49%, rgb(255 255 255 / 0) 50%),
+          repeating-linear-gradient(90deg, rgb(69 55 40 / 9%) 0 1px, transparent 1px 40px),
+          var(--floor);
+      }
+
+      .scene h4 {
+        position: relative;
+        z-index: 3;
+        margin: 0;
+        max-width: 220px;
+        font-size: 18px;
+      }
+
+      .scene p {
+        position: relative;
+        z-index: 3;
+        max-width: 260px;
+        margin: 6px 0 0;
+        color: rgb(32 32 29 / 72%);
+        font-size: 13px;
+      }
+
+      .furniture {
+        position: absolute;
+        z-index: 2;
+        border: 1px solid rgb(46 40 32 / 20%);
+        box-shadow: 0 16px 30px rgb(48 42 32 / 16%);
+      }
+
+      .desk {
+        left: 28%;
+        bottom: 28%;
+        width: 46%;
+        height: 18%;
+        border-radius: 6px;
+        background: var(--wood);
+      }
+
+      .desk::before,
+      .desk::after {
+        content: "";
+        position: absolute;
+        top: -36px;
+        width: 54px;
+        height: 30px;
+        border: 2px solid #2e2f31;
+        border-radius: 4px;
+        background: #202328;
+      }
+
+      .desk::before {
+        left: 20%;
+      }
+
+      .desk::after {
+        right: 20%;
+      }
+
+      .rack {
+        left: 30%;
+        bottom: 18%;
+        width: 38%;
+        height: 56%;
+        border: 10px solid #2f3436;
+        border-bottom-width: 16px;
+        background: linear-gradient(90deg, transparent 45%, rgb(255 255 255 / 25%) 46% 54%, transparent 55%);
+      }
+
+      .rack::before {
+        content: "";
+        position: absolute;
+        left: 14%;
+        right: 14%;
+        top: 34%;
+        height: 8px;
+        background: #2f3436;
+      }
+
+      .tea {
+        left: 36%;
+        bottom: 24%;
+        width: 28%;
+        height: 18%;
+        border-radius: 50%;
+        background: var(--wood);
+      }
+
+      .tea::before,
+      .tea::after {
+        content: "";
+        position: absolute;
+        bottom: -22px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #c9c0b2;
+      }
+
+      .tea::before {
+        left: -52px;
+      }
+
+      .tea::after {
+        right: -52px;
+      }
+
+      .sauna {
+        right: 18%;
+        bottom: 16%;
+        width: 30%;
+        height: 64%;
+        border-radius: 6px;
+        background:
+          linear-gradient(90deg, rgb(255 255 255 / 28%), transparent 26% 74%, rgb(0 0 0 / 8%)),
+          repeating-linear-gradient(90deg, rgb(112 77 42 / 45%) 0 2px, transparent 2px 18px),
+          #c58b56;
+      }
+
+      .wardrobe {
+        right: 8%;
+        bottom: 23%;
+        width: 24%;
+        height: 58%;
+        border-radius: 4px;
+        background:
+          linear-gradient(90deg, rgb(255 255 255 / 35%), transparent 22%),
+          repeating-linear-gradient(90deg, transparent 0 47px, rgb(42 36 28 / 18%) 48px 50px),
+          #d7cbb8;
+      }
+
+      .sofa {
+        left: 28%;
+        bottom: 21%;
+        width: 46%;
+        height: 22%;
+        border-radius: 18px 18px 8px 8px;
+        background: #d8d2c7;
+      }
+
+      .controls {
+        display: grid;
+        grid-template-columns: 120px minmax(0, 1fr) 120px;
+        gap: 12px;
+        align-items: center;
+        padding: 12px 14px 14px;
+      }
+
+      .controls span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      input[type="range"] {
+        width: 100%;
+        accent-color: var(--blue);
+      }
+
+      .pano-layout {
+        display: grid;
+        grid-template-columns: 250px minmax(0, 1fr);
+        gap: 14px;
+      }
+
+      .pano-tabs {
+        display: grid;
+        gap: 8px;
+      }
+
+      .pano-tab {
+        min-height: 62px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        color: var(--ink);
+        cursor: pointer;
+        padding: 9px 11px;
+        text-align: left;
+      }
+
+      .pano-tab b {
+        display: block;
+        font-size: 15px;
+      }
+
+      .pano-tab span {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .pano-tab[aria-pressed="true"] {
+        border-color: var(--ink);
+        background: var(--ink);
+        color: white;
+      }
+
+      .pano-tab[aria-pressed="true"] span {
+        color: rgb(255 255 255 / 72%);
+      }
+
+      .real-pano {
+        position: relative;
+        height: 460px;
+        overflow: hidden;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background-color: #d2cabd;
+        background-image: var(--pano-image);
+        background-repeat: repeat-x;
+        background-size: auto 100%;
+        background-position: var(--pano-x, 50%) center;
+        cursor: grab;
+        touch-action: none;
+        user-select: none;
+      }
+
+      .real-pano:active {
+        cursor: grabbing;
+      }
+
+      .pano-badge {
+        position: absolute;
+        left: 14px;
+        bottom: 14px;
+        max-width: min(520px, calc(100% - 28px));
+        border: 1px solid rgb(255 255 255 / 64%);
+        border-radius: 8px;
+        padding: 10px 12px;
+        background: rgb(32 32 29 / 76%);
+        color: white;
+        backdrop-filter: blur(10px);
+      }
+
+      .pano-badge b {
+        display: block;
+        margin-bottom: 3px;
+      }
+
+      .pano-badge span {
+        color: rgb(255 255 255 / 78%);
+        font-size: 13px;
+      }
+
+      .render-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .render-card {
+        overflow: hidden;
+      }
+
+      .render-photo {
+        display: block;
+        width: 100%;
+        height: 230px;
+        object-fit: cover;
+        background: #d8d0c2;
+      }
+
+      .render-art {
+        position: relative;
+        height: 230px;
+        overflow: hidden;
+        background:
+          linear-gradient(180deg, rgb(255 255 255 / 35%), transparent 40%),
+          linear-gradient(125deg, var(--art-a), var(--art-b));
+      }
+
+      .render-art::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 38%;
+        background: repeating-linear-gradient(90deg, rgb(0 0 0 / 8%) 0 1px, transparent 1px 34px), var(--floor);
+      }
+
+      .render-art.office .desk,
+      .render-art.gym .rack,
+      .render-art.tea-room .tea,
+      .render-art.spa .sauna,
+      .render-art.sleep .wardrobe,
+      .render-art.living .sofa {
+        display: block;
+      }
+
+      .render-art .furniture {
+        transform: scale(0.9);
+      }
+
+      .render-body {
+        padding: 14px;
+      }
+
+      .render-body h3 {
+        margin-bottom: 6px;
+        font-size: 18px;
+      }
+
+      .render-body p {
+        margin-bottom: 0;
+        color: var(--muted);
+      }
+
+      .details-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .detail-card {
+        padding: 15px;
+      }
+
+      .detail-card h3 {
+        margin-bottom: 8px;
+        font-size: 17px;
+      }
+
+      .detail-card ul {
+        margin: 0;
+        padding-left: 18px;
+        color: var(--muted);
+      }
+
+      .detail-card li + li {
+        margin-top: 6px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .compare-table {
+        overflow: hidden;
+      }
+
+      th,
+      td {
+        padding: 12px;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        background: var(--panel-2);
+        font-size: 13px;
+      }
+
+      td {
+        color: var(--muted);
+      }
+
+      tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .flow {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .flow-card {
+        padding: 13px;
+      }
+
+      .flow-card b {
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      .flow-card span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .plan-stage {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 280px;
+        gap: 14px;
+        align-items: stretch;
+      }
+
+      .plan-render {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+
+      .plan-render img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .birdseye {
+        margin: 0 0 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+
+      .birdseye img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .birdseye figcaption {
+        padding: 10px 13px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .plan-notes {
+        display: grid;
+        gap: 10px;
+      }
+
+      .plan-note {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        padding: 13px;
+      }
+
+      .plan-note b {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .plan-note span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .docs {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .doc-link {
+        min-height: 38px;
+        display: inline-flex;
+        align-items: center;
+        padding: 0 12px;
+        text-decoration: none;
+      }
+
+      footer {
+        padding: 28px 0 40px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      @media (max-width: 1040px) {
+        .hero-grid,
+        .floor-wrap {
+          grid-template-columns: 1fr;
+        }
+
+        .intro {
+          min-height: auto;
+        }
+
+        .scheme-tabs,
+        .render-grid,
+        .details-grid,
+        .flow,
+        .pano-layout,
+        .plan-stage {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 720px) {
+        .topbar .shell {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 12px 0;
+        }
+
+        h1 {
+          font-size: 34px;
+        }
+
+        .lead {
+          font-size: 15px;
+        }
+
+        .scheme-tabs,
+        .stats,
+        .render-grid,
+        .details-grid,
+        .flow {
+          grid-template-columns: 1fr;
+        }
+
+        .section-head,
+        .viewer-head,
+        .controls {
+          align-items: flex-start;
+          flex-direction: column;
+          display: flex;
+        }
+
+        .pano-layout,
+        .pano-tabs,
+        .plan-stage {
+          grid-template-columns: 1fr;
+        }
+
+        .real-pano {
+          height: 330px;
+        }
+
+        .panorama-window {
+          height: 300px;
+        }
+
+        th,
+        td {
+          padding: 10px;
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="shell">
+        <div class="brand">
+          <strong>239 平精装轻改方案展示</strong>
+          <span>5 套方案 · 360 概念全景 · 全屋定制执行细节</span>
+        </div>
+        <nav aria-label="页面导航">
+          <a href="#schemes">方案</a>
+          <a href="#top-plan">彩平</a>
+          <a href="#dimensions">尺寸</a>
+          <a href="#programming">建议</a>
+          <a href="#living-balcony">客厅阳台</a>
+          <a href="#panorama">360</a>
+          <a href="#renders">效果图</a>
+          <a href="#details">细节</a>
+          <a href="#compare">对比</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="schemes">
+        <div class="shell">
+          <div class="hero-grid">
+            <div class="intro">
+              <div>
+                <span class="eyebrow">精装交付后轻改，不重做硬装主体</span>
+                <h1 id="schemeTitle">方案 A：均衡旗舰版</h1>
+                <p class="lead" id="schemeLead">保留三间睡眠房，右下卧室做独立力量房，主卧套房做双人升降办公，南向阳台放小茶桌，主卧干区优先放成品桑拿舱。</p>
+              </div>
+
+              <div class="scheme-tabs" role="group" aria-label="方案切换">
+                <button class="scheme-tab" type="button" data-scheme="0" aria-pressed="true"><b>A 均衡旗舰</b><span>默认推荐</span></button>
+                <button class="scheme-tab" type="button" data-scheme="1" aria-pressed="false"><b>B 办公优先</b><span>会议更稳</span></button>
+                <button class="scheme-tab" type="button" data-scheme="2" aria-pressed="false"><b>C 健身强化</b><span>训练最大化</span></button>
+                <button class="scheme-tab" type="button" data-scheme="3" aria-pressed="false"><b>D 茶会社交</b><span>会客更强</span></button>
+                <button class="scheme-tab" type="button" data-scheme="4" aria-pressed="false"><b>E 家庭弹性</b><span>适合成长</span></button>
+              </div>
+
+              <div class="stats" aria-label="当前方案指标">
+                <div class="stat"><b id="bedCount">3</b><span>睡眠房</span></div>
+                <div class="stat"><b id="officeScore">高</b><span>办公强度</span></div>
+                <div class="stat"><b id="gymScore">高</b><span>健身强度</span></div>
+                <div class="stat"><b id="changeLevel">轻改</b><span>改造深度</span></div>
+              </div>
+            </div>
+
+            <div class="floor-wrap">
+              <figure class="floor-card" aria-label="户型图与功能标注">
+                <img src="floorplan-dimensions.jpg" alt="239 平带尺寸户型图">
+                <figcaption class="pin" style="--x: 24%; --y: 56%; --pin: var(--blue);" id="pinOffice">主卧办公</figcaption>
+                <figcaption class="pin" style="--x: 76%; --y: 65%; --pin: var(--red);" id="pinGym">右下健身房</figcaption>
+                <figcaption class="pin" style="--x: 49%; --y: 70%; --pin: var(--gold);" id="pinTea">南向茶位</figcaption>
+                <figcaption class="pin" style="--x: 18%; --y: 39%; --pin: var(--green);" id="pinSpa">成品桑拿</figcaption>
+              </figure>
+              <aside class="mini-panel">
+                <h3 id="fitTitle">适合长期自住</h3>
+                <p id="fitCopy">办公、训练、茶位和 Spa 都有明确落位，改造风险控制在轻改范围内。</p>
+                <p>尺寸依据：套内 196㎡，客餐厅 54.3㎡，右下次卧 15.7㎡，南阳台 19.4㎡，主卧套房 47.8㎡。</p>
+                <div class="meter">
+                  <label>成本压力</label>
+                  <div class="bar"><span id="costBar" style="--w: 68%; --c: var(--gold);"></span></div>
+                </div>
+                <div class="meter">
+                  <label>施工风险</label>
+                  <div class="bar"><span id="riskBar" style="--w: 42%; --c: var(--green);"></span></div>
+                </div>
+                <div class="meter">
+                  <label>功能完成度</label>
+                  <div class="bar"><span id="valueBar" style="--w: 88%; --c: var(--blue);"></span></div>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="top-plan">
+        <div class="shell">
+          <div class="section-head">
+            <h2>整体顶视彩平图</h2>
+            <p>这是你说的“从上往下看”的室内建筑效果图，更准确叫彩平图或顶视平面渲染图。它把功能方案、家具、器械、茶位、桑拿和关键尺寸放在同一张户型图里。</p>
+          </div>
+          <figure class="birdseye">
+            <img src="renders/overall-topdown-render-v2.png" alt="239 平整体鸟瞰室内建筑效果图">
+            <figcaption>整体鸟瞰室内建筑效果图：右下 15.7㎡已按整间健身/训练空间处理，不保留床；下面的彩平图负责精确功能落位和尺寸标注。</figcaption>
+          </figure>
+          <div class="plan-stage">
+            <figure class="plan-render">
+              <a href="top-view-render-plan.svg" target="_blank" rel="noreferrer">
+                <img src="top-view-render-plan.svg" alt="239 平轻改方案顶视彩平渲染图">
+              </a>
+            </figure>
+            <aside class="plan-notes">
+              <div class="plan-note">
+                <b>一张图看整体</b>
+                <span>客餐厅、主卧套房、右下健身房、南阳台茶位、主卧桑拿和三间睡眠房都在同一张彩平里。</span>
+              </div>
+              <div class="plan-note">
+                <b>尺寸显性标注</b>
+                <span>标出总面宽 19900 mm、总纵深约 12900 mm、健身房 3200 × 4200 mm、阳台 9700 × 2100 mm、客餐厅南侧 6400 mm 开口。</span>
+              </div>
+              <div class="plan-note">
+                <b>颜色读图</b>
+                <span>蓝色是办公，红色是健身，金色是茶位，绿色是桑拿/Spa；深灰地面代表健身房橡胶垫。</span>
+              </div>
+              <div class="plan-note">
+                <b>落地边界</b>
+                <span>这是方案级表达，能用于和设计师沟通整体感觉；最终柜体、器械和墙体需交付后 CAD 复尺。</span>
+              </div>
+              <div class="plan-note">
+                <b>桑拿位置</b>
+                <span>鸟瞰 AI 图里桑拿不明显，准确落位看彩平图左上主卧衣帽/干区的绿色标注。尺寸只建议 1 人或窄 2 人成品舱，复尺后再判断是否牺牲一组衣柜。</span>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section id="dimensions">
+        <div class="shell">
+          <div class="section-head">
+            <h2>尺寸依据</h2>
+            <p>生成提示词已按这张尺寸图约束空间尺度。最终施工仍以交付后量房、CAD 深化和设备实尺复核为准。</p>
+          </div>
+          <div class="compare-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>空间</th>
+                  <th>图纸标注</th>
+                  <th>渲染控制点</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>客餐厅</td>
+                  <td>54.3㎡，南侧阳台开口约 6400 mm</td>
+                  <td>住宅尺度客餐厨，不做酒店大堂；家具按家庭客厅体量。</td>
+                </tr>
+                <tr>
+                  <td>右下次卧/健身房</td>
+                  <td>15.7㎡，约 3200 × 4200 mm</td>
+                  <td>只放紧凑家用龙门架，保留门扇、卧推凳和走道安全区。</td>
+                </tr>
+                <tr>
+                  <td>南向阳台/茶位</td>
+                  <td>19.4㎡，约 9700 × 2100 mm</td>
+                  <td>强调长窄阳台，小茶桌和 300-450 mm 窄边柜，不做大露台。</td>
+                </tr>
+                <tr>
+                  <td>主卧套房/办公</td>
+                  <td>47.8㎡，含主卫 8.5㎡、衣帽区</td>
+                  <td>双人办公只是套房内一个功能段，不做独立大办公室。</td>
+                </tr>
+                <tr>
+                  <td>主卧桑拿</td>
+                  <td>主卫 8.5㎡，衣帽间约 2250 × 2800 mm</td>
+                  <td>按 1 人或窄 2 人成品舱控制，优先可逆轻改，不扩成 Spa 房。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="programming">
+        <div class="shell">
+          <div class="section-head">
+            <h2>复合功能建议</h2>
+            <p>15.7㎡如果只做健身，确实可能存在使用频率波动。更稳的做法是“力量训练为主，低风险复合”为辅；家政和主卧办公也按高频使用来组织。</p>
+          </div>
+          <div class="details-grid">
+            <article class="detail-card">
+              <h3>健身房主方案</h3>
+              <ul>
+                <li>龙门架靠墙，中心保留训练净空。</li>
+                <li>墙面镜 + 器械收纳 + 橡胶地垫。</li>
+                <li>可兼拉伸、瑜伽、康复训练。</li>
+                <li>不保留床，不做客房属性。</li>
+              </ul>
+            </article>
+            <article class="detail-card">
+              <h3>亲子/娱乐复合</h3>
+              <ul>
+                <li>只建议做低冲击娱乐：Switch、体感、软垫游戏。</li>
+                <li>器械区加锁或用柜门/帘子隔开。</li>
+                <li>避免儿童攀爬龙门架和碰杠铃。</li>
+                <li>不建议无人看护儿童长期玩。</li>
+              </ul>
+            </article>
+            <article class="detail-card">
+              <h3>电竞房判断</h3>
+              <ul>
+                <li>不建议和重器械强绑定。</li>
+                <li>显示器、主机、线缆和滚轮椅容易和哑铃冲突。</li>
+                <li>如果要做，只做壁挂屏 + 折叠桌。</li>
+                <li>更推荐放到独立书房或客房备用位。</li>
+              </ul>
+            </article>
+            <article class="detail-card">
+              <h3>冥想/恢复</h3>
+              <ul>
+                <li>健身房可兼 10 分钟呼吸、拉伸和泡沫轴。</li>
+                <li>用卷帘遮住器械视觉噪音。</li>
+                <li>灯光做可调暗，不用强对比健身灯。</li>
+                <li>真正安静冥想更适合主卧或阳台角。</li>
+              </ul>
+            </article>
+            <article class="detail-card">
+              <h3>家政空间</h3>
+              <ul>
+                <li>洗烘叠放、脏衣分拣、清洁工具充电。</li>
+                <li>吸尘器/洗地机/耗材/维修工具分区。</li>
+                <li>预留台面做折衣、熨烫、临时收纳。</li>
+                <li>不建议改冥想室，位置和气质不匹配。</li>
+              </ul>
+            </article>
+            <article class="detail-card">
+              <h3>主卧办公分隔</h3>
+              <ul>
+                <li>建议做天花轨道帘或软隔断。</li>
+                <li>帘子在床和工位之间，减少视觉干扰。</li>
+                <li>保留 900mm 左右通行和椅子后退空间。</li>
+                <li>帘子不要贴升降桌，避免夹线和刮碰。</li>
+              </ul>
+            </article>
+            <article class="detail-card">
+              <h3>主卧更优隔断</h3>
+              <ul>
+                <li>首选：顶装双轨帘，纱帘 + 遮光/吸音帘。</li>
+                <li>进阶：半高柜 + 长虹玻璃/木格栅。</li>
+                <li>不建议砌墙，套房会变碎且影响采光。</li>
+                <li>视频背景用书柜墙解决，不让床入镜。</li>
+              </ul>
+            </article>
+            <article class="detail-card">
+              <h3>我建议的取舍</h3>
+              <ul>
+                <li>15.7㎡保持“健身 + 恢复 + 轻娱乐”。</li>
+                <li>电竞不要放进健身房，除非只做折叠临时位。</li>
+                <li>家政做强，不要牺牲给低频功能。</li>
+                <li>主卧办公一定加软分隔，入住体验会好很多。</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="living-balcony">
+        <div class="shell">
+          <div class="section-head">
+            <h2>无电视客厅与南阳台</h2>
+            <p>如果你本来就不想放电视，这个 54.3㎡客餐厅不要再按传统“沙发对电视墙”做。更适合做成家庭公共客厅：围坐、阅读、长桌、亲子、临时投影和阳台慢生活连在一起。</p>
+          </div>
+          <figure class="birdseye">
+            <a href="living-balcony-program.svg" target="_blank" rel="noreferrer">
+              <img src="living-balcony-program.svg" alt="无电视客厅与南向长阳台复合使用示意">
+            </a>
+            <figcaption>南阳台不建议只放一个两人茶桌。更合理是拆成茶阅读、绿植拉伸/冥想、家政清洁缓冲三段，并保留连续通道。</figcaption>
+          </figure>
+          <div class="details-grid">
+            <article class="detail-card">
+              <h3>客厅沙发怎么用</h3>
+              <ul>
+                <li>沙发不是为了看电视，而是为了围坐交流。</li>
+                <li>用弧形/模块沙发 + 两把单椅，面向人而不是面向墙。</li>
+                <li>中间用轻茶几或边几，别放巨大固定茶几。</li>
+                <li>朋友来、陪小孩、喝茶、聊天、阅读都能用。</li>
+              </ul>
+            </article>
+            <article class="detail-card">
+              <h3>无电视客厅</h3>
+              <ul>
+                <li>取消固定电视墙，做低柜 + 书墙/展示柜。</li>
+                <li>需要影音时用隐藏投影幕或移动屏。</li>
+                <li>墙面不要全做装饰，留白更耐看。</li>
+                <li>重点是让客厅能每天被使用，而不是只待客。</li>
+              </ul>
+            </article>
+            <article class="detail-card">
+              <h3>双人办公能否放客厅</h3>
+              <ul>
+                <li>可以，但不建议做成主办公区。</li>
+                <li>客厅办公会破坏公共区整洁和休息感。</li>
+                <li>视频会议、线缆、显示器很容易变成视觉噪音。</li>
+                <li>更适合作为临时公共长桌，不替代主卧办公。</li>
+              </ul>
+            </article>
+            <article class="detail-card">
+              <h3>公共长桌</h3>
+              <ul>
+                <li>比电视墙更适合你家：拼图、手作、阅读、临时办公。</li>
+                <li>可放在餐厅与客厅之间，不压住主通道。</li>
+                <li>桌边预留地插或柜体插座。</li>
+                <li>朋友来时也能做茶酒台或轻餐台。</li>
+              </ul>
+            </article>
+            <article class="detail-card">
+              <h3>南阳台三段式</h3>
+              <ul>
+                <li>靠客厅一段：茶 + 阅读，2 人茶桌刚好。</li>
+                <li>中段：绿植、瑜伽、拉伸、晒太阳。</li>
+                <li>一端：清洁工具、折叠晾晒、家政补充。</li>
+                <li>用窄柜，不要整排深柜压窄阳台。</li>
+              </ul>
+            </article>
+            <article class="detail-card">
+              <h3>阳台别空旷</h3>
+              <ul>
+                <li>用连续地毯/地砖分区形成长廊感。</li>
+                <li>植物不要堆满，做几个稳定点位。</li>
+                <li>茶桌旁加窄边柜和阅读灯，频率会提高。</li>
+                <li>保留 800-900mm 走道，后期才好打理。</li>
+              </ul>
+            </article>
+            <article class="detail-card">
+              <h3>围炉/围坐</h3>
+              <ul>
+                <li>可以做“围炉感”，但不建议真明火。</li>
+                <li>用电陶炉/煮茶盘 + 耐热台面更稳。</li>
+                <li>围坐区和阳台茶位要分工：客厅社交，阳台独处。</li>
+                <li>这样不会两个茶区互相重复。</li>
+              </ul>
+            </article>
+            <article class="detail-card">
+              <h3>我会怎么定</h3>
+              <ul>
+                <li>主办公仍放主卧套房，保持安静和可关闭。</li>
+                <li>客厅做无电视围坐 + 公共长桌。</li>
+                <li>南阳台做三段式慢生活长廊。</li>
+                <li>临时投影即可，不要为低频电视牺牲整面墙。</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="panorama">
+        <div class="shell">
+          <div class="section-head">
+            <h2>尺寸约束 360 渲染</h2>
+            <p>按 239㎡尺寸图重做的 2:1 全景渲染。拖动画面可横向查看；这些图按户型标注尺寸约束生成，交付复尺后应以 CAD/量房数据再出最终版。</p>
+          </div>
+          <div class="pano-layout">
+            <div class="pano-tabs" role="group" aria-label="360 渲染图切换">
+              <button class="pano-tab" type="button" data-pano="0" aria-pressed="true"><b>客餐厅 54.3㎡</b><span>约 6.4m 南向开口</span></button>
+              <button class="pano-tab" type="button" data-pano="1" aria-pressed="false"><b>健身房 15.7㎡</b><span>约 3.2m × 4.2m</span></button>
+              <button class="pano-tab" type="button" data-pano="2" aria-pressed="false"><b>主卧办公区</b><span>套房 47.8㎡内</span></button>
+              <button class="pano-tab" type="button" data-pano="3" aria-pressed="false"><b>阳台茶位 19.4㎡</b><span>约 9.7m × 2.1m</span></button>
+              <button class="pano-tab" type="button" data-pano="4" aria-pressed="false"><b>主卧桑拿</b><span>干区/衣帽间紧凑放置</span></button>
+            </div>
+            <div class="viewer">
+              <div class="viewer-head">
+                <h3 id="panoTitle">客餐厅 54.3㎡ 360 渲染</h3>
+                <span id="panoNote">按图纸客餐厅 54.3㎡、南侧约 6.4m 阳台开口约束，避免做成酒店大堂尺度。</span>
+              </div>
+              <div class="real-pano" id="realPano" style="--pano-image: url('panoramas/living-dining-360.png');" role="img" aria-label="可拖动 360 渲染图">
+                <div class="pano-badge">
+                  <b id="panoDimension">客餐厅 54.3㎡</b>
+                  <span id="panoCaption">拖动画面横向查看。家具和视角按普通住宅层高与 6.4m 南向开口控制。</span>
+                </div>
+              </div>
+              <div class="controls">
+                <span>向左拖动</span>
+                <input id="panoramaRange" type="range" min="0" max="100" value="50" aria-label="调整 360 渲染视角">
+                <span>向右拖动</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="renders">
+        <div class="shell">
+          <div class="section-head">
+            <h2>尺寸约束展示图</h2>
+            <p>不再使用 CSS 画的假图。这里直接复用按尺寸生成的 3D 渲染图，作为和设计师沟通空间尺度的首版视觉稿。</p>
+          </div>
+          <div class="render-grid">
+            <article class="render-card">
+              <img class="render-photo" src="panoramas/gym-157-360.png" alt="15.7 平健身房 3D 渲染">
+              <div class="render-body">
+                <h3 id="renderOneTitle">右下卧室力量房</h3>
+                <p id="renderOneCopy">龙门架、引体、可调哑铃和整屋地垫，优先保证训练安全区。</p>
+              </div>
+            </article>
+            <article class="render-card">
+              <img class="render-photo" src="panoramas/master-office-360.png" alt="主卧双人办公 3D 渲染">
+              <div class="render-body">
+                <h3 id="renderTwoTitle">主卧双人升降办公</h3>
+                <p id="renderTwoCopy">双桌、双屏、整墙柜和视频背景，适合长期高频办公。</p>
+              </div>
+            </article>
+            <article class="render-card">
+              <img class="render-photo" src="panoramas/balcony-tea-360.png" alt="19.4 平南阳台茶位 3D 渲染">
+              <div class="render-body">
+                <h3 id="renderThreeTitle">南向阳台小茶位</h3>
+                <p id="renderThreeCopy">小体量茶桌和窄边柜，不占公共会客主轴。</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="details">
+        <div class="shell">
+          <div class="section-head">
+            <h2>细节拆解</h2>
+            <p>这些是交付后给设计师、全屋定制和设备商继续深化的关键条件。</p>
+          </div>
+          <div class="details-grid">
+            <article class="detail-card">
+              <h3>双人办公</h3>
+              <ul>
+                <li>两张升降桌不互相干扰。</li>
+                <li>每人独立强电、弱电、理线。</li>
+                <li>视频背景不直拍床和杂物。</li>
+                <li>厚窗帘、地毯或吸音画降混响。</li>
+              </ul>
+            </article>
+            <article class="detail-card">
+              <h3>力量健身</h3>
+              <ul>
+                <li>龙门架顶部不碰吊顶。</li>
+                <li>杠铃、拉索、卧推凳留安全区。</li>
+                <li>橡胶地垫整铺，局部加厚。</li>
+                <li>门缝、窗帘和通风一起处理。</li>
+              </ul>
+            </article>
+            <article class="detail-card">
+              <h3>Spa 与冷热水</h3>
+              <ul>
+                <li>优先成品红外/干蒸舱。</li>
+                <li>确认功率、回路和散热距离。</li>
+                <li>恒温花洒加手持冷水模式。</li>
+                <li>不新增高风险冷水池。</li>
+              </ul>
+            </article>
+            <article class="detail-card">
+              <h3>全屋定制</h3>
+              <ul>
+                <li>玄关、餐边、家政先解决高频物品。</li>
+                <li>办公柜兼视频会议背景。</li>
+                <li>健身柜不侵入训练安全区。</li>
+                <li>三间卧室都保留真实衣柜。</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="compare">
+        <div class="shell">
+          <div class="section-head">
+            <h2>5 套方案对比</h2>
+            <p>最终推荐仍是 A，但其余方案适合在家庭成员、预算、办公强度或训练强度发生变化时切换。</p>
+          </div>
+          <div class="compare-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>方案</th>
+                  <th>核心取舍</th>
+                  <th>最适合</th>
+                  <th>代价</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>A 均衡旗舰</td>
+                  <td>三卧保留，健身独立，办公在主卧套房，茶位和桑拿都有。</td>
+                  <td>长期自住，功能都要但不想大改。</td>
+                  <td>主卧会承担办公属性，私密感需靠柜体和软装分区。</td>
+                </tr>
+                <tr>
+                  <td>B 办公优先</td>
+                  <td>办公更独立，主卧更清爽，健身降级为轻力量。</td>
+                  <td>两人频繁会议、需要稳定办公背景。</td>
+                  <td>龙门架规格要收缩，训练强度下降。</td>
+                </tr>
+                <tr>
+                  <td>C 健身强化</td>
+                  <td>健身房扩展恢复角和更完整器械，办公做开放式高效工位。</td>
+                  <td>训练频率高、力量器械优先。</td>
+                  <td>公共区或主卧办公安静度下降。</td>
+                </tr>
+                <tr>
+                  <td>D 茶会社交</td>
+                  <td>阳台茶位升级为会客茶区，客餐厅待客能力最强。</td>
+                  <td>常待客、重视茶和景观体验。</td>
+                  <td>阳台和客厅动线更紧，收纳要更克制。</td>
+                </tr>
+                <tr>
+                  <td>E 家庭弹性</td>
+                  <td>儿童/长辈房弹性最高，办公和健身更多使用折叠/可移动设备。</td>
+                  <td>家庭结构可能变化，想降低一次性投入。</td>
+                  <td>功能完成度不如 A/C，体验更依赖日常收纳复位。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="shell">
+          <div class="section-head">
+            <h2>落地流程</h2>
+            <p>网站用于方案沟通，真正下单前仍要先复尺和确认设备参数。</p>
+          </div>
+          <div class="flow">
+            <article class="flow-card"><b>1 复尺</b><span>净尺寸、层高、门洞、电位、物业规则。</span></article>
+            <article class="flow-card"><b>2 定设备</b><span>龙门架、升降桌、桑拿舱先锁规格。</span></article>
+            <article class="flow-card"><b>3 锁平面</b><span>设备尺寸反推柜体、电位和通行。</span></article>
+            <article class="flow-card"><b>4 出图</b><span>全屋定制、灯光、局部电位出深化图。</span></article>
+            <article class="flow-card"><b>5 安装</b><span>精装保护、柜体、器械、桑拿、软装。</span></article>
+            <article class="flow-card"><b>6 验收</b><span>按清单逐项验收使用场景。</span></article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="shell">
+          <div class="section-head">
+            <h2>配套文档</h2>
+            <p>这些 Markdown 文件仍保留，方便发给供应商报价和复尺。</p>
+          </div>
+          <div class="docs">
+            <a class="doc-link" href="doc.html?file=README.md">总任务书</a>
+            <a class="doc-link" href="doc.html?file=room-by-room-spec.md">逐空间规格</a>
+            <a class="doc-link" href="doc.html?file=vendor-brief.md">供应商任务书</a>
+            <a class="doc-link" href="doc.html?file=measurement-checklist.md">复尺清单</a>
+            <a class="doc-link" href="doc.html?file=acceptance-checklist.md">验收清单</a>
+            <a class="doc-link" href="doc.html?file=procurement-shortlist.md">采购短清单</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="shell">当前版本为概念展示网站。真实 360 渲染图应在交付复尺、设备型号和柜体深化图确认后替换。</div>
+    </footer>
+
+    <script>
+      const schemes = [
+        {
+          title: "方案 A：均衡旗舰版",
+          lead: "保留三间睡眠房，右下卧室做独立力量房，主卧套房做双人升降办公，南向阳台放小茶桌，主卧干区优先放成品桑拿舱。",
+          beds: "3",
+          office: "高",
+          gym: "高",
+          change: "轻改",
+          fitTitle: "适合长期自住",
+          fitCopy: "办公、训练、茶位和 Spa 都有明确落位，改造风险控制在轻改范围内。",
+          bars: [68, 42, 88],
+          pins: ["主卧办公", "右下健身房", "南向茶位", "成品桑拿"],
+          panoTitle: "方案 A 全屋动线视角",
+          panoNote: "玄关进入，右侧健身，向内到客餐厅，南向阳台茶位，最后回到主卧办公和桑拿。",
+          scenes: ["独立力量房", "龙门架靠墙，镜墙修正动作，橡胶地垫保护精装地面。", "南向景观茶位", "小茶桌、两座和窄边柜，保留阳台通行和清洁路径。", "主卧双人办公", "两张升降桌错位布置，书柜做整洁视频背景。", "成品桑拿舱", "主卧干区优先，确认功率、散热和搬运路径后下单。"],
+          renders: ["右下卧室力量房", "龙门架、引体、可调哑铃和整屋地垫，优先保证训练安全区。", "主卧双人升降办公", "双桌、双屏、整墙柜和视频背景，适合长期高频办公。", "南向阳台小茶位", "小体量茶桌和窄边柜，不占公共会客主轴。"]
+        },
+        {
+          title: "方案 B：办公优先版",
+          lead: "把中部次卧做独立双人办公室，主卧恢复更完整的休息属性；健身房改为轻力量配置，保留引体、哑铃和折叠训练凳。",
+          beds: "3",
+          office: "极高",
+          gym: "中",
+          change: "轻改+",
+          fitTitle: "适合高频会议",
+          fitCopy: "两个人经常同时开会时，独立办公室比主卧办公更稳，也更好控制视频背景和噪音。",
+          bars: [60, 38, 80],
+          pins: ["中部独立办公", "轻力量训练", "阳台茶位", "主卧桑拿"],
+          panoTitle: "方案 B 办公优先视角",
+          panoNote: "书房成为核心功能房，办公静音和背景优先，健身设备改为收纳友好的轻力量系统。",
+          scenes: ["轻力量训练角", "引体、可调哑铃和折叠训练凳，减少大型器械对卧室的占用。", "安静茶位", "茶位保持小体量，避免和办公房抢预算。", "独立双人办公室", "两张升降桌正交布置，中间留共享打印和设备柜。", "主卧成品桑拿", "主卧干区或衣帽附近优先，保证休息区不被办公设备侵入。"],
+          renders: ["轻力量训练房", "不放大型龙门架，改为引体、哑铃、训练凳和收纳柜。", "独立双人办公室", "双工位、双会议背景、文件柜和设备柜集中在一间房。", "主卧恢复套房感", "主卧减少办公设备，桑拿作为套房 Spa 体验的一部分。"]
+        },
+        {
+          title: "方案 C：健身强化版",
+          lead: "右下卧室完整让给半专业力量训练，预留更大龙门架、杠片和恢复角；办公仍在主卧，但桌位更紧凑，茶位保持基础版。",
+          beds: "3",
+          office: "中高",
+          gym: "极高",
+          change: "中轻改",
+          fitTitle: "适合训练优先",
+          fitCopy: "如果力量训练频率高，这版把空间、安全区、地垫和器械收纳都向健身倾斜。",
+          bars: [76, 52, 84],
+          pins: ["紧凑办公", "强化健身房", "基础茶位", "健身后桑拿"],
+          panoTitle: "方案 C 健身强化视角",
+          panoNote: "力量房成为核心空间，可加入更完整拉索、杠片和恢复拉伸区，办公和茶位相对克制。",
+          scenes: ["强化力量房", "龙门架、杠铃、哑铃、训练凳和拉伸角分区，地垫局部加厚。", "基础茶位", "保留独处饮茶，不扩大成会客茶室。", "紧凑双人办公", "桌位以 L 型错位为主，保证必要会议和长时间工作。", "健身后恢复", "桑拿更偏运动恢复，优先靠近健身和淋浴动线。"],
+          renders: ["强化力量房", "更完整龙门架、杠片架、镜墙和恢复拉伸角，训练体验最好。", "紧凑双人办公", "保留双升降桌，但收纳和背景墙更克制。", "恢复型 Spa", "桑拿和冷热淋浴围绕训练后恢复组织。"]
+        },
+        {
+          title: "方案 D：茶会社交版",
+          lead: "南向阳台茶位升级为小型会客茶区，客餐厅与阳台形成待客轴线；健身保留独立房但器械略收缩，办公维持主卧双工位。",
+          beds: "3",
+          office: "高",
+          gym: "中高",
+          change: "轻改",
+          fitTitle: "适合常待客",
+          fitCopy: "如果朋友来家里喝茶、聊天、看景的频率高，这版会让公共区更有仪式感。",
+          bars: [70, 45, 82],
+          pins: ["主卧办公", "收缩健身", "会客茶区", "主卧桑拿"],
+          panoTitle: "方案 D 茶会社交视角",
+          panoNote: "从客厅延伸到南向阳台，形成小茶会动线，办公和健身保持但不再抢公共区焦点。",
+          scenes: ["收缩力量房", "保留龙门架核心训练，减少额外有氧和大体量收纳。", "会客茶区", "茶桌、边柜、两到四座和景观帘，成为公共区的第二焦点。", "主卧双人办公", "办公保持双工位，但会客日可关闭主卧门保持私密。", "主卧 Spa", "桑拿仍按轻改成品舱处理，不进入公共会客区。"],
+          renders: ["收缩型健身房", "保留核心力量训练，把部分预算让给茶区和公共区软装。", "会客茶区", "南向阳台升级为两到四人茶席，边柜承接茶具和水具。", "客餐厅待客轴线", "餐边柜和茶区连动，提升待客效率。"]
+        },
+        {
+          title: "方案 E：家庭弹性版",
+          lead: "优先考虑儿童、长辈或未来家庭结构变化，三间卧室的可变性最高；办公和健身采用可移动/折叠设备，桑拿作为后置选项。",
+          beds: "3+",
+          office: "中",
+          gym: "中",
+          change: "最轻改",
+          fitTitle: "适合先住后改",
+          fitCopy: "预算更稳，保留未来调整余地；适合不确定家庭成员、孩子成长或老人同住周期的阶段。",
+          bars: [48, 28, 70],
+          pins: ["弹性办公", "可变训练", "轻茶位", "预留桑拿"],
+          panoTitle: "方案 E 家庭弹性视角",
+          panoNote: "减少固定设备和满墙柜，更多使用可移动家具，先保证三间卧室和公共区舒适。",
+          scenes: ["可变训练区", "哑铃、瑜伽垫和折叠凳为主，大型龙门架后置。", "轻茶位", "一张小桌和移动边几即可，先不做重柜体。", "弹性办公", "一主一辅工位，辅位可转换为学习桌或客房桌。", "预留 Spa", "只预留电位和空间，桑拿舱等入住后再定。"],
+          renders: ["可变训练房", "先用轻器械和可移动收纳，未来再升级龙门架。", "家庭弹性办公", "一主一辅工位，可在儿童学习、客房和办公之间转换。", "轻茶位", "移动家具和小边柜为主，降低一次性投入。"]
+        }
+      ];
+
+      const tabs = [...document.querySelectorAll(".scheme-tab")];
+      const panoTabs = [...document.querySelectorAll(".pano-tab")];
+      const range = document.querySelector("#panoramaRange");
+      const realPano = document.querySelector("#realPano");
+
+      const panoData = [
+        {
+          title: "客餐厅 54.3㎡ 360 渲染",
+          note: "按图纸客餐厅 54.3㎡、南侧约 6.4m 阳台开口约束，避免做成酒店大堂尺度。",
+          dimension: "客餐厅 54.3㎡",
+          caption: "拖动画面横向查看。家具和视角按普通住宅层高与 6.4m 南向开口控制。",
+          image: "panoramas/living-dining-360.png"
+        },
+        {
+          title: "右下次卧 15.7㎡ 健身房 360 渲染",
+          note: "按图纸右下次卧 15.7㎡、约 3.2m × 4.2m 约束，龙门架按紧凑家用规格处理。",
+          dimension: "健身房 15.7㎡，约 3.2m × 4.2m",
+          caption: "重点看龙门架、卧推凳、门扇和走道的尺度关系。后续要用真实器械尺寸复核。",
+          image: "panoramas/gym-157-360.png"
+        },
+        {
+          title: "主卧套房办公区 360 渲染",
+          note: "按主卧套房 47.8㎡总尺度处理，办公区只是套房内的一段功能，不做成独立大办公室。",
+          dimension: "主卧套房 47.8㎡内的双人办公区",
+          caption: "双升降桌、书柜和视频背景控制在主卧套房尺度内，保留睡眠与通行边界。",
+          image: "panoramas/master-office-360.png"
+        },
+        {
+          title: "南向阳台 19.4㎡ 茶位 360 渲染",
+          note: "按图纸南阳台 19.4㎡、约 9.7m × 2.1m 约束，强调长而窄，不做成大露台。",
+          dimension: "南向阳台 19.4㎡，约 9.7m × 2.1m",
+          caption: "小茶桌和窄边柜靠客厅侧布置，保留阳台横向通行和清洁路径。",
+          image: "panoramas/balcony-tea-360.png"
+        },
+        {
+          title: "主卧干区/衣帽间桑拿 360 渲染",
+          note: "按主卫 8.5㎡、衣帽间约 2.25m × 2.8m 附近的紧凑条件处理，只放成品小桑拿舱。",
+          dimension: "紧凑 1 人或窄 2 人成品桑拿舱",
+          caption: "这不是重做 Spa 房，而是轻改可逆设备。要复核功率、散热、门洞和开门空间。",
+          image: "panoramas/master-sauna-360.png"
+        }
+      ];
+
+      const setText = (id, value) => {
+        document.querySelector(id).textContent = value;
+      };
+
+      function applyScheme(index) {
+        const data = schemes[index];
+        tabs.forEach((tab, tabIndex) => tab.setAttribute("aria-pressed", String(tabIndex === index)));
+        setText("#schemeTitle", data.title);
+        setText("#schemeLead", data.lead);
+        setText("#bedCount", data.beds);
+        setText("#officeScore", data.office);
+        setText("#gymScore", data.gym);
+        setText("#changeLevel", data.change);
+        setText("#fitTitle", data.fitTitle);
+        setText("#fitCopy", data.fitCopy);
+        document.querySelector("#costBar").style.setProperty("--w", `${data.bars[0]}%`);
+        document.querySelector("#riskBar").style.setProperty("--w", `${data.bars[1]}%`);
+        document.querySelector("#valueBar").style.setProperty("--w", `${data.bars[2]}%`);
+        setText("#pinOffice", data.pins[0]);
+        setText("#pinGym", data.pins[1]);
+        setText("#pinTea", data.pins[2]);
+        setText("#pinSpa", data.pins[3]);
+        setText("#renderOneTitle", data.renders[0]);
+        setText("#renderOneCopy", data.renders[1]);
+        setText("#renderTwoTitle", data.renders[2]);
+        setText("#renderTwoCopy", data.renders[3]);
+        setText("#renderThreeTitle", data.renders[4]);
+        setText("#renderThreeCopy", data.renders[5]);
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => applyScheme(Number(tab.dataset.scheme)));
+      });
+
+      function setPanoPosition(percent) {
+        realPano.style.setProperty("--pano-x", `${percent}%`);
+        range.value = String(percent);
+      }
+
+      function applyPano(index) {
+        const data = panoData[index];
+        panoTabs.forEach((tab, tabIndex) => tab.setAttribute("aria-pressed", String(tabIndex === index)));
+        setText("#panoTitle", data.title);
+        setText("#panoNote", data.note);
+        setText("#panoDimension", data.dimension);
+        setText("#panoCaption", data.caption);
+        realPano.style.setProperty("--pano-image", `url('${data.image}')`);
+        setPanoPosition(50);
+      }
+
+      panoTabs.forEach((tab) => {
+        tab.addEventListener("click", () => applyPano(Number(tab.dataset.pano)));
+      });
+
+      range.addEventListener("input", () => {
+        setPanoPosition(Number(range.value));
+      });
+
+      let dragging = false;
+      let startX = 0;
+      let startValue = 50;
+
+      realPano.addEventListener("pointerdown", (event) => {
+        dragging = true;
+        startX = event.clientX;
+        startValue = Number(range.value);
+        realPano.setPointerCapture(event.pointerId);
+      });
+
+      realPano.addEventListener("pointermove", (event) => {
+        if (!dragging) return;
+        const delta = event.clientX - startX;
+        const next = Math.max(0, Math.min(100, startValue + delta / 5));
+        setPanoPosition(next);
+      });
+
+      realPano.addEventListener("pointerup", () => {
+        dragging = false;
+      });
+
+      realPano.addEventListener("pointercancel", () => {
+        dragging = false;
+      });
+    </script>
+  </body>
+</html>

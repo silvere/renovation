@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 820" role="img" aria-labelledby="title desc">
+  <title id="title">无电视客厅与南向长阳台复合使用示意</title>
+  <desc id="desc">展示客餐厅与 9.7 米长南向阳台如何拆分为围坐、长桌、阅读茶位、绿植拉伸、儿童活动和家政收纳区。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#20201d"/>
+    </marker>
+    <pattern id="stone" width="44" height="44" patternUnits="userSpaceOnUse">
+      <rect width="44" height="44" fill="#d8cfc1"/>
+      <path d="M0 44 H44 M44 0 V44" stroke="#c7bcad" stroke-width="1" opacity=".7"/>
+      <path d="M4 35 C16 21, 28 29, 42 7" fill="none" stroke="#eee7dd" stroke-width="2" opacity=".7"/>
+    </pattern>
+    <pattern id="balcony" width="42" height="42" patternUnits="userSpaceOnUse">
+      <rect width="42" height="42" fill="#e9ddc8"/>
+      <path d="M0 42 H42 M42 0 V42" stroke="#d2c0a3" stroke-width="1"/>
+    </pattern>
+    <style>
+      .wall { fill: none; stroke: #20201d; stroke-width: 10; stroke-linejoin: round; }
+      .thin { fill: none; stroke: #5d574d; stroke-width: 4; }
+      .room-title { font: 800 30px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #20201d; }
+      .label { font: 700 20px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #20201d; }
+      .text { font: 16px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #5d574d; }
+      .dim { font: 18px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #20201d; }
+      .dim-line { stroke: #20201d; stroke-width: 2; marker-start: url(#arrow); marker-end: url(#arrow); }
+      .zone-blue { fill: #24566c; opacity: .16; stroke: #24566c; stroke-width: 3; stroke-dasharray: 10 8; }
+      .zone-gold { fill: #a1712a; opacity: .18; stroke: #a1712a; stroke-width: 3; stroke-dasharray: 10 8; }
+      .zone-green { fill: #526742; opacity: .16; stroke: #526742; stroke-width: 3; stroke-dasharray: 10 8; }
+      .zone-red { fill: #9d4035; opacity: .13; stroke: #9d4035; stroke-width: 3; stroke-dasharray: 10 8; }
+      .furn { fill: #efe6da; stroke: #806f5e; stroke-width: 3; }
+      .wood { fill: #9f7954; stroke: #6b4d32; stroke-width: 3; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="820" fill="#f5f0e7"/>
+  <text x="60" y="58" class="room-title">客厅不用电视时：客餐厅 + 9.7m 南阳台生活平台</text>
+  <text x="60" y="90" class="text">核心逻辑：不要把大客厅做成低频“看电视厅”，而是做成围坐、阅读、亲子、临时投影、轻办公和阳台慢生活的复合平台。</text>
+
+  <g transform="translate(95 130)">
+    <!-- living room -->
+    <rect x="360" y="0" width="640" height="520" fill="url(#stone)" stroke="#d7cdbc" stroke-width="2"/>
+    <path class="wall" d="M360 0 H1000 V520 H360 Z"/>
+    <line x1="390" y1="520" x2="970" y2="520" stroke="#74a9b5" stroke-width="10" stroke-dasharray="34 15"/>
+    <text x="552" y="54" class="room-title">客餐厅 54.3㎡</text>
+    <text x="548" y="86" class="text">南侧开口约 6400mm，不设固定电视墙</text>
+
+    <!-- no tv living zones -->
+    <rect x="410" y="120" width="265" height="155" rx="14" class="zone-blue"/>
+    <text x="438" y="158" class="label">围坐会客岛</text>
+    <text x="438" y="188" class="text">沙发 + 单椅 + 边几</text>
+    <text x="438" y="214" class="text">聊天/读书/喝茶/陪伴</text>
+    <path d="M450 238 C505 198, 600 198, 648 236 C625 278, 490 286, 445 260 Z" class="furn"/>
+    <rect x="548" y="226" width="78" height="38" rx="12" fill="#2d2a26" opacity=".75"/>
+
+    <rect x="710" y="118" width="235" height="150" rx="14" class="zone-gold"/>
+    <text x="735" y="154" class="label">公共长桌</text>
+    <text x="735" y="184" class="text">拼图/手作/临时办公</text>
+    <text x="735" y="210" class="text">朋友来时变餐酒台</text>
+    <rect x="748" y="228" width="150" height="48" rx="8" class="wood"/>
+
+    <rect x="410" y="315" width="225" height="150" rx="14" class="zone-green"/>
+    <text x="436" y="352" class="label">阅读/乐器角</text>
+    <text x="436" y="382" class="text">书墙、落地灯、单椅</text>
+    <text x="436" y="408" class="text">不抢客厅中心位</text>
+    <rect x="568" y="336" width="34" height="108" rx="4" class="wood"/>
+    <circle cx="495" cy="418" r="28" class="furn"/>
+
+    <rect x="672" y="315" width="273" height="150" rx="14" class="zone-red"/>
+    <text x="704" y="352" class="label">亲子/体感/临时投影</text>
+    <text x="704" y="382" class="text">地毯留空，不固定大茶几</text>
+    <text x="704" y="408" class="text">投影幕/移动屏按需出现</text>
+    <rect x="720" y="428" width="172" height="22" rx="11" fill="#20201d" opacity=".72"/>
+
+    <!-- balcony -->
+    <rect x="0" y="560" width="970" height="210" fill="url(#balcony)" stroke="#c7b690" stroke-width="2"/>
+    <path class="wall" d="M0 560 H970 V770 H0 Z"/>
+    <line x1="20" y1="560" x2="950" y2="560" stroke="#74a9b5" stroke-width="10" stroke-dasharray="34 15"/>
+    <line x1="0" y1="800" x2="970" y2="800" class="dim-line"/>
+    <text x="410" y="794" class="dim">9700mm</text>
+    <line x1="-30" y1="560" x2="-30" y2="770" class="dim-line"/>
+    <text x="-78" y="682" class="dim" transform="rotate(90 -78 682)">2100mm</text>
+    <text x="360" y="610" class="room-title">南向阳台 19.4㎡</text>
+    <text x="378" y="642" class="text">长条形，不建议只放一张小茶桌</text>
+
+    <rect x="30" y="625" width="260" height="112" rx="14" class="zone-gold"/>
+    <text x="58" y="660" class="label">茶 + 阅读</text>
+    <text x="58" y="688" class="text">2人茶桌、窄茶柜</text>
+    <circle cx="204" cy="694" r="34" class="wood"/>
+    <circle cx="142" cy="694" r="20" class="furn"/>
+    <circle cx="266" cy="694" r="20" class="furn"/>
+
+    <rect x="330" y="625" width="335" height="112" rx="14" class="zone-green"/>
+    <text x="360" y="660" class="label">绿植 + 拉伸 + 冥想</text>
+    <text x="360" y="688" class="text">瑜伽垫、普拉提、日晒植物</text>
+    <rect x="542" y="695" width="92" height="24" rx="12" fill="#526742" opacity=".6"/>
+
+    <rect x="705" y="625" width="220" height="112" rx="14" class="zone-blue"/>
+    <text x="730" y="660" class="label">清洁/家政缓冲</text>
+    <text x="730" y="688" class="text">洗护囤货、折叠晾晒</text>
+    <rect x="846" y="650" width="46" height="70" rx="6" class="wood"/>
+
+    <line x1="70" y1="745" x2="900" y2="745" stroke="#20201d" stroke-width="2" stroke-dasharray="10 8" opacity=".6"/>
+    <text x="382" y="765" class="text">保留连续通道，家具深度尽量控制在 300-450mm</text>
+
+    <!-- notes -->
+    <g transform="translate(1060 20)">
+      <rect x="0" y="0" width="385" height="680" rx="10" fill="#fffdf8" stroke="#d9d4ca"/>
+      <text x="24" y="44" class="label">客厅不用电视的三种做法</text>
+      <text x="24" y="86" class="text">1. 围坐型：最推荐，沙发不对墙，面向人。</text>
+      <text x="24" y="124" class="text">2. 图书馆型：一面书墙 + 长桌，客厅变公共书房。</text>
+      <text x="24" y="162" class="text">3. 活动型：留大地毯，体感游戏/亲子/临时投影。</text>
+      <line x1="24" y1="195" x2="360" y2="195" stroke="#d9d4ca"/>
+      <text x="24" y="235" class="label">南阳台更合理的使用</text>
+      <text x="24" y="277" class="text">不要只做一个茶桌点位，而是分三段：</text>
+      <text x="24" y="315" class="text">茶阅读 2.6m + 绿植拉伸 3.3m + 家政缓冲 2.2m。</text>
+      <text x="24" y="353" class="text">中间保留横向通道，避免阳台变仓库。</text>
+      <line x1="24" y1="386" x2="360" y2="386" stroke="#d9d4ca"/>
+      <text x="24" y="426" class="label">我的建议</text>
+      <text x="24" y="468" class="text">客厅不要再放电视墙。用围坐 + 公共长桌 +</text>
+      <text x="24" y="494" class="text">临时投影，把低频客厅改成高频生活厅。</text>
+      <text x="24" y="532" class="text">阳台做“慢生活长廊”，茶位只是其中一段。</text>
+      <text x="24" y="570" class="text">这样日常使用频率会比单独茶桌高很多。</text>
+    </g>
+  </g>
+</svg>

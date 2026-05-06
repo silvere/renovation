@@ -1,0 +1,220 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2260 1570" role="img" aria-labelledby="title desc">
+  <title id="title">239 平轻改方案顶视彩平渲染图</title>
+  <desc id="desc">按户型尺寸图比例绘制的顶视平面渲染图，标注客餐厅、主卧套房、健身房、双人办公、茶位、桑拿与关键尺寸。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#20201d"/>
+    </marker>
+    <marker id="arrowLight" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7a7469"/>
+    </marker>
+    <pattern id="stone" width="56" height="56" patternUnits="userSpaceOnUse">
+      <rect width="56" height="56" fill="#d8cfc1"/>
+      <path d="M8 54 C21 36, 37 38, 55 10 M-5 20 C18 28, 38 12, 64 24 M17 -4 C21 15, 14 32, 31 58" fill="none" stroke="#eee7dc" stroke-width="2" opacity=".75"/>
+      <path d="M0 56 H56 M56 0 V56" stroke="#c9bdad" stroke-width="1" opacity=".55"/>
+    </pattern>
+    <pattern id="wood" width="72" height="72" patternUnits="userSpaceOnUse" patternTransform="rotate(90)">
+      <rect width="72" height="72" fill="#c8b39a"/>
+      <path d="M8 0 V72 M28 0 V72 M50 0 V72 M69 0 V72" stroke="#a58b6f" stroke-width="2" opacity=".45"/>
+      <path d="M14 8 C25 18, 18 32, 31 46 C40 56, 51 55, 63 66" fill="none" stroke="#dfcfbb" stroke-width="2" opacity=".5"/>
+    </pattern>
+    <pattern id="rubber" width="44" height="44" patternUnits="userSpaceOnUse">
+      <rect width="44" height="44" fill="#252827"/>
+      <circle cx="10" cy="12" r="1.8" fill="#777" opacity=".55"/>
+      <circle cx="30" cy="7" r="1.6" fill="#aaa" opacity=".45"/>
+      <circle cx="35" cy="30" r="1.7" fill="#777" opacity=".55"/>
+      <circle cx="16" cy="34" r="1.3" fill="#aaa" opacity=".4"/>
+    </pattern>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#2c261e" flood-opacity=".16"/>
+    </filter>
+    <style>
+      .wall { fill: none; stroke: #1f1d1a; stroke-width: 12; stroke-linejoin: round; stroke-linecap: round; }
+      .thin-wall { fill: none; stroke: #585247; stroke-width: 5; stroke-linejoin: round; }
+      .room-label { font: 700 28px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #20201d; }
+      .room-sub { font: 18px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #5e5a52; }
+      .dim { font: 20px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #20201d; }
+      .small { font: 15px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #5e5a52; }
+      .note { font: 18px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #5e5a52; }
+      .tag-text { font: 700 18px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #fff; }
+      .dim-line { stroke: #20201d; stroke-width: 2; marker-start: url(#arrow); marker-end: url(#arrow); }
+      .dim-tick { stroke: #7a7469; stroke-width: 2; }
+      .furn { fill: #efe7db; stroke: #7c6d5c; stroke-width: 3; }
+      .wood-furn { fill: #9f7954; stroke: #6b4d32; stroke-width: 3; }
+      .glass { fill: #b8d7df; stroke: #6d9aa7; stroke-width: 3; opacity: .85; }
+      .highlight-office { fill: #24566c; opacity: .15; stroke: #24566c; stroke-width: 4; stroke-dasharray: 12 8; }
+      .highlight-gym { fill: #9d4035; opacity: .16; stroke: #9d4035; stroke-width: 4; stroke-dasharray: 12 8; }
+      .highlight-tea { fill: #a1712a; opacity: .14; stroke: #a1712a; stroke-width: 4; stroke-dasharray: 12 8; }
+      .highlight-spa { fill: #526742; opacity: .16; stroke: #526742; stroke-width: 4; stroke-dasharray: 12 8; }
+    </style>
+  </defs>
+
+  <rect width="2260" height="1570" fill="#f5f0e7"/>
+  <text x="80" y="70" font-family="ui-sans-serif, system-ui" font-size="34" font-weight="800" fill="#20201d">239㎡精装轻改顶视彩平图</text>
+  <text x="80" y="108" class="note">按尺寸图比例表达：四房两厅四卫，套内约196㎡；功能方案为三卧 + 独立力量房 + 主卧双人办公 + 阳台茶位 + 成品桑拿。</text>
+
+  <g transform="translate(135 165)">
+    <!-- dimension frame -->
+    <line x1="0" y1="-64" x2="1990" y2="-64" class="dim-line"/>
+    <text x="940" y="-78" class="dim">总面宽 19900 mm</text>
+    <line x1="0" y1="-18" x2="530" y2="-18" class="dim-line"/>
+    <line x1="530" y1="-18" x2="700" y2="-18" class="dim-line"/>
+    <line x1="700" y1="-18" x2="1030" y2="-18" class="dim-line"/>
+    <line x1="1030" y1="-18" x2="1670" y2="-18" class="dim-line"/>
+    <line x1="1670" y1="-18" x2="1990" y2="-18" class="dim-line"/>
+    <text x="230" y="-28" class="small">5300</text>
+    <text x="600" y="-28" class="small">1700</text>
+    <text x="835" y="-28" class="small">3300</text>
+    <text x="1300" y="-28" class="small">6400</text>
+    <text x="1810" y="-28" class="small">3200</text>
+    <line x1="2038" y1="0" x2="2038" y2="1290" class="dim-line"/>
+    <text x="2065" y="650" class="dim" transform="rotate(90 2065 650)">总纵深约 12900 mm</text>
+
+    <!-- main footprint fills -->
+    <rect x="0" y="0" width="530" height="1020" fill="url(#wood)" stroke="#d8cbb9" stroke-width="2"/>
+    <rect x="530" y="80" width="360" height="160" fill="#d7e8ee" stroke="#b9cbd0" stroke-width="2"/>
+    <rect x="530" y="240" width="255" height="320" fill="url(#wood)" stroke="#d8cbb9" stroke-width="2"/>
+    <rect x="785" y="300" width="245" height="300" fill="#ece4d7" stroke="#d8cbb9" stroke-width="2"/>
+    <rect x="530" y="620" width="170" height="285" fill="#d7e8ee" stroke="#b9cbd0" stroke-width="2"/>
+    <rect x="700" y="620" width="330" height="390" fill="url(#wood)" stroke="#d8cbb9" stroke-width="2"/>
+    <rect x="700" y="1010" width="970" height="210" fill="#e8dcc9" stroke="#c7b690" stroke-width="2"/>
+    <rect x="1030" y="0" width="380" height="200" fill="url(#stone)" stroke="#d8cbb9" stroke-width="2"/>
+    <rect x="1410" y="0" width="200" height="235" fill="#d7e8ee" stroke="#b9cbd0" stroke-width="2"/>
+    <rect x="1030" y="235" width="640" height="735" fill="url(#stone)" stroke="#d8cbb9" stroke-width="2"/>
+    <rect x="1670" y="330" width="145" height="160" fill="#ece4d7" stroke="#d8cbb9" stroke-width="2"/>
+    <rect x="1815" y="470" width="200" height="190" fill="#d7e8ee" stroke="#b9cbd0" stroke-width="2"/>
+    <rect x="1670" y="600" width="320" height="420" fill="url(#rubber)" stroke="#d8cbb9" stroke-width="2"/>
+
+    <!-- master suite subdivisions -->
+    <rect x="0" y="0" width="305" height="280" fill="#d7e8ee" stroke="#b9cbd0" stroke-width="2"/>
+    <rect x="305" y="0" width="225" height="280" fill="#d6d2c8" stroke="#c5bbae" stroke-width="2"/>
+    <rect x="0" y="280" width="530" height="740" fill="url(#wood)" stroke="#d8cbb9" stroke-width="2"/>
+
+    <!-- highlights -->
+    <rect x="30" y="655" width="470" height="320" rx="10" class="highlight-office"/>
+    <rect x="312" y="22" width="200" height="160" rx="8" class="highlight-spa"/>
+    <rect x="1678" y="608" width="304" height="404" rx="10" class="highlight-gym"/>
+    <rect x="720" y="1032" width="910" height="166" rx="10" class="highlight-tea"/>
+
+    <!-- walls -->
+    <path class="wall" d="M0 0 H530 V80 H890 V240 H1030 V0 H1610 V235 H1670 V330 H1815 V470 H1990 V1020 H1670 V1220 H700 V1010 H530 V1020 H0 Z"/>
+    <path class="thin-wall" d="M305 0 V280 H0 M530 240 H785 V560 H530 M785 300 H1030 M530 620 H1030 M700 620 V1010 M1030 235 H1670 M1410 0 V235 M1610 0 V235 M1670 490 H1815 M1815 470 V660 M1670 600 H1990"/>
+    <path class="thin-wall" d="M530 280 H0 M530 0 V1020"/>
+
+    <!-- windows / balcony openings -->
+    <line x1="1070" y1="970" x2="1650" y2="970" stroke="#73a9b5" stroke-width="10" stroke-dasharray="40 18"/>
+    <line x1="720" y1="1220" x2="1630" y2="1220" stroke="#73a9b5" stroke-width="10" stroke-dasharray="40 18"/>
+    <line x1="0" y1="690" x2="0" y2="970" stroke="#73a9b5" stroke-width="10" stroke-dasharray="36 14"/>
+    <line x1="1670" y1="930" x2="1990" y2="930" stroke="#73a9b5" stroke-width="10" stroke-dasharray="36 14"/>
+    <line x1="540" y1="80" x2="880" y2="80" stroke="#73a9b5" stroke-width="8" stroke-dasharray="30 12"/>
+
+    <!-- master furniture -->
+    <rect x="96" y="390" width="250" height="210" rx="16" class="furn"/>
+    <rect x="124" y="416" width="90" height="46" rx="10" fill="#fff8ed" stroke="#c8b9a3" stroke-width="2"/>
+    <rect x="226" y="416" width="90" height="46" rx="10" fill="#fff8ed" stroke="#c8b9a3" stroke-width="2"/>
+    <rect x="52" y="675" width="190" height="72" rx="8" class="wood-furn"/>
+    <rect x="270" y="675" width="190" height="72" rx="8" class="wood-furn"/>
+    <rect x="65" y="760" width="55" height="55" rx="12" class="furn"/>
+    <rect x="285" y="760" width="55" height="55" rx="12" class="furn"/>
+    <rect x="55" y="862" width="400" height="84" rx="12" fill="#d9d1c4" stroke="#9b8974" stroke-width="3"/>
+    <text x="66" y="720" class="small" fill="#24566c">双人升降办公</text>
+
+    <!-- sauna in closet/dry zone -->
+    <rect x="350" y="44" width="120" height="105" rx="8" fill="#a97848" stroke="#6a4729" stroke-width="4"/>
+    <rect x="372" y="60" width="76" height="74" rx="5" fill="#d7b083" stroke="#7b5734" stroke-width="2"/>
+    <text x="346" y="172" class="small" fill="#526742">成品桑拿舱</text>
+
+    <!-- secondary rooms -->
+    <rect x="585" y="315" width="150" height="120" rx="10" class="furn"/>
+    <rect x="728" y="705" width="180" height="150" rx="12" class="furn"/>
+    <rect x="566" y="665" width="75" height="110" rx="8" fill="#f5efe5" stroke="#93aeb5" stroke-width="2"/>
+
+    <!-- kitchen / dining / living -->
+    <rect x="1060" y="32" width="300" height="54" rx="8" class="wood-furn"/>
+    <rect x="1070" y="112" width="260" height="54" rx="8" fill="#efe3d3" stroke="#8b7055" stroke-width="3"/>
+    <rect x="1090" y="345" width="300" height="92" rx="12" class="wood-furn"/>
+    <circle cx="1230" cy="565" r="82" fill="#d4c5b1" stroke="#806a51" stroke-width="4"/>
+    <circle cx="1230" cy="565" r="42" fill="#b99568" opacity=".75"/>
+    <path d="M1160 735 C1235 690, 1390 690, 1498 748 C1464 840, 1286 870, 1152 804 Z" fill="#e7ded2" stroke="#806f5e" stroke-width="4"/>
+    <rect x="1292" y="796" width="160" height="70" rx="18" fill="#2d2a26" opacity=".78"/>
+    <rect x="1510" y="334" width="112" height="310" rx="6" fill="#bba083" stroke="#7c6046" stroke-width="3"/>
+
+    <!-- tea balcony -->
+    <circle cx="1160" cy="1115" r="44" fill="#9f7954" stroke="#6b4d32" stroke-width="4"/>
+    <circle cx="1082" cy="1115" r="28" class="furn"/>
+    <circle cx="1238" cy="1115" r="28" class="furn"/>
+    <rect x="1432" y="1050" width="150" height="70" rx="8" class="wood-furn"/>
+    <text x="1068" y="1182" class="small" fill="#a1712a">景观小茶位</text>
+
+    <!-- gym -->
+    <rect x="1745" y="660" width="145" height="190" rx="8" fill="none" stroke="#1b1d1e" stroke-width="16"/>
+    <line x1="1745" y1="722" x2="1890" y2="722" stroke="#1b1d1e" stroke-width="10"/>
+    <rect x="1768" y="870" width="145" height="46" rx="18" fill="#20201d" stroke="#777" stroke-width="3"/>
+    <rect x="1878" y="690" width="70" height="210" rx="6" fill="#373c3d" opacity=".8"/>
+    <circle cx="1748" cy="965" r="18" fill="#111"/>
+    <circle cx="1795" cy="965" r="18" fill="#111"/>
+    <circle cx="1842" cy="965" r="18" fill="#111"/>
+    <text x="1712" y="645" class="small" fill="#9d4035">龙门架 + 引体 + 哑铃</text>
+
+    <!-- labels -->
+    <text x="95" y="126" class="room-label">主卫</text>
+    <text x="88" y="156" class="room-sub">8.5㎡</text>
+    <text x="344" y="222" class="room-sub">衣帽间</text>
+    <text x="120" y="348" class="room-label">主卧套房</text>
+    <text x="130" y="380" class="room-sub">47.8㎡ · 办公区叠加</text>
+    <text x="626" y="146" class="room-sub">北阳台 5.8㎡</text>
+    <text x="584" y="292" class="room-label">次卧</text>
+    <text x="594" y="326" class="room-sub">10.4㎡</text>
+    <text x="808" y="430" class="room-sub">走道 7.8㎡</text>
+    <text x="568" y="842" class="room-sub">次卫 4.8㎡</text>
+    <text x="780" y="690" class="room-label">次卧</text>
+    <text x="786" y="724" class="room-sub">15.2㎡</text>
+    <text x="1142" y="78" class="room-label">厨房</text>
+    <text x="1150" y="112" class="room-sub">8.9㎡</text>
+    <text x="1436" y="90" class="room-sub">家政间</text>
+    <text x="1240" y="300" class="room-label">客餐厅</text>
+    <text x="1245" y="334" class="room-sub">54.3㎡ · LDKB 双洄游</text>
+    <text x="1715" y="438" class="room-sub">玄关 2.8㎡</text>
+    <text x="1840" y="566" class="room-sub">次卫 3.8㎡</text>
+    <text x="1738" y="780" class="room-label" fill="#fff">健身房</text>
+    <text x="1744" y="814" class="room-sub" fill="#ddd">次卧 15.7㎡</text>
+    <text x="986" y="1070" class="room-label">南向阳台</text>
+    <text x="1000" y="1102" class="room-sub">19.4㎡ · 约 9700 × 2100 mm</text>
+
+    <!-- callout tags -->
+    <g filter="url(#shadow)">
+      <rect x="56" y="970" width="260" height="46" rx="23" fill="#24566c"/>
+      <text x="78" y="1000" class="tag-text">主卧双人坐站办公</text>
+      <rect x="1688" y="1015" width="250" height="46" rx="23" fill="#9d4035"/>
+      <text x="1712" y="1045" class="tag-text">15.7㎡独立力量房</text>
+      <rect x="1335" y="1185" width="230" height="46" rx="23" fill="#a1712a"/>
+      <text x="1362" y="1215" class="tag-text">南阳台景观茶位</text>
+      <rect x="300" y="186" width="220" height="46" rx="23" fill="#526742"/>
+      <text x="324" y="216" class="tag-text">成品桑拿预留</text>
+    </g>
+
+    <!-- internal dimension labels -->
+    <line x1="1670" y1="1048" x2="1990" y2="1048" class="dim-line"/>
+    <text x="1766" y="1082" class="dim">3200</text>
+    <line x1="2020" y1="600" x2="2020" y2="1020" class="dim-line"/>
+    <text x="2045" y="825" class="dim" transform="rotate(90 2045 825)">4200</text>
+    <line x1="700" y1="1252" x2="1670" y2="1252" class="dim-line"/>
+    <text x="1135" y="1288" class="dim">9700</text>
+    <line x1="672" y1="1010" x2="672" y2="1220" class="dim-line"/>
+    <text x="628" y="1126" class="dim" transform="rotate(90 628 1126)">2100</text>
+    <line x1="1030" y1="998" x2="1670" y2="998" class="dim-line"/>
+    <text x="1304" y="1034" class="dim">6400</text>
+  </g>
+
+  <g transform="translate(80 1485)">
+    <rect x="0" y="-28" width="28" height="18" fill="#24566c" opacity=".25" stroke="#24566c"/>
+    <text x="38" y="-12" class="small">办公/书柜/视频背景</text>
+    <rect x="220" y="-28" width="28" height="18" fill="#9d4035" opacity=".25" stroke="#9d4035"/>
+    <text x="258" y="-12" class="small">力量训练</text>
+    <rect x="388" y="-28" width="28" height="18" fill="#a1712a" opacity=".25" stroke="#a1712a"/>
+    <text x="426" y="-12" class="small">茶位</text>
+    <rect x="535" y="-28" width="28" height="18" fill="#526742" opacity=".25" stroke="#526742"/>
+    <text x="573" y="-12" class="small">桑拿/Spa</text>
+    <text x="760" y="-12" class="small">说明：这是方案级彩平渲染图，按户型图尺寸比例绘制；施工图需交付后复尺与 CAD 深化。</text>
+  </g>
+</svg>
